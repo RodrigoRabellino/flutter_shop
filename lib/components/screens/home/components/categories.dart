@@ -24,6 +24,12 @@ class _CategoriesState extends State<Categories> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin),
       child: SizedBox(
+        // decoration: BoxDecoration(color: Colors.white, boxShadow: [
+        //   BoxShadow(
+        //       offset: const Offset(0, 10),
+        //       color: kAccent!.withOpacity(0.30),
+        //       blurRadius: 10)
+        // ]),
         height: 30,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,

@@ -19,11 +19,13 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       elevation: 0,
       leading: IconButton(
+        splashColor: kAccent!.withOpacity(0.20),
         onPressed: () {},
         icon: SvgPicture.asset("assets/icons/back.svg"),
       ),
       actions: [
         IconButton(
+          splashColor: kAccent!.withOpacity(0.20),
           onPressed: () {},
           icon: SvgPicture.asset(
             "assets/icons/search.svg",
@@ -31,6 +33,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         IconButton(
+          splashColor: kAccent!.withOpacity(0.20),
           onPressed: () {},
           icon: SvgPicture.asset(
             "assets/icons/cart.svg",
