@@ -3,7 +3,7 @@ import 'package:store2_flutter/models/products.dart';
 import '../../../../constants.dart';
 
 class CardCounter extends StatefulWidget {
-  CardCounter({
+  const CardCounter({
     Key? key,
     required this.product,
   }) : super(key: key);

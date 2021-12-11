@@ -11,7 +11,6 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -25,7 +24,7 @@ class Body extends StatelessWidget {
                 .copyWith(color: kTextColor, fontWeight: FontWeight.bold),
           ),
         ),
-        Categories(),
+        const Categories(),
         Expanded(
             child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
