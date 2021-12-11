@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:store2_flutter/constants.dart';
 import 'package:store2_flutter/models/products.dart';
 
+import 'card_counter.dart';
+import 'color_select_and_size.dart';
+import 'counter_and_like.dart';
+import 'description.dart';
 import 'product_title.dart';
 
 class Body extends StatelessWidget {
@@ -36,43 +41,42 @@ class Body extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
+                      ColorSelectAndSize(product: product),
+                      Description(product: product),
+                      CounterAndLike(product: product),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text("Color:"),
-                              Row(
-                                children: [
-                                  ColorDot(
-                                    color: product.color,
-                                    isSelected: true,
-                                  ),
-                                  const ColorDot(
-                                    color: Colors.red,
-                                  ),
-                                  const ColorDot(
-                                    color: Colors.blue,
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                          const Spacer(),
-                          RichText(
-                            text: TextSpan(
-                              style: const TextStyle(color: kTextColor),
-                              children: [
-                                const TextSpan(text: "Size: "),
-                                TextSpan(
-                                  text: product.size.toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline5!
-                                      .copyWith(color: kTextColor),
-                                )
-                              ],
+                          ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                product.color,
+                              ),
+                              shape: MaterialStateProperty.all<
+                                  RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
                             ),
+                            onPressed: () {},
+                            child: SvgPicture.asset(
+                              "assets/icons/add_to_cart.svg",
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: kDefaultPaddin,
+                          ),
+                          Expanded(
+                            child: ElevatedButton(
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          product.color),
+                                ),
+                                onPressed: () {},
+                                child: Text("Buy Now".toUpperCase())),
                           )
                         ],
                       )
@@ -84,41 +88,6 @@ class Body extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class ColorDot extends StatelessWidget {
-  const ColorDot({
-    Key? key,
-    required this.color,
-    this.isSelected = false,
-  }) : super(key: key);
-
-  final Color color;
-  final bool isSelected;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(
-          top: kDefaultPaddin / 4, right: kDefaultPaddin / 2),
-      padding: const EdgeInsets.all(2),
-      width: 24,
-      height: 24,
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            offset: const Offset(0, 0),
-            color: !isSelected ? Colors.transparent : color.withOpacity(.50),
-          )
-        ],
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.black26),
-      ),
-      child: DecoratedBox(
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
       ),
     );
   }

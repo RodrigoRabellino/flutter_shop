@@ -54,6 +54,8 @@ class ProductTitle extends StatelessWidget {
                 child: Image.asset(
                   product.imageUrl,
                   fit: BoxFit.fill,
+                  width: 70,
+                  height: 250,
                 ),
               )
             ],
