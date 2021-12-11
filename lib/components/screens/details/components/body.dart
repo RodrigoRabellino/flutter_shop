@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:store2_flutter/constants.dart';
 import 'package:store2_flutter/models/products.dart';
-
-import 'card_counter.dart';
+import 'cart_actions.dart';
 import 'color_select_and_size.dart';
 import 'counter_and_like.dart';
 import 'description.dart';
@@ -42,44 +40,18 @@ class Body extends StatelessWidget {
                   child: Column(
                     children: [
                       ColorSelectAndSize(product: product),
+                      const SizedBox(
+                        height: kDefaultPaddin,
+                      ),
                       Description(product: product),
+                      const SizedBox(
+                        height: kDefaultPaddin,
+                      ),
                       CounterAndLike(product: product),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                product.color,
-                              ),
-                              shape: MaterialStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: SvgPicture.asset(
-                              "assets/icons/add_to_cart.svg",
-                              color: Colors.white,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: kDefaultPaddin,
-                          ),
-                          Expanded(
-                            child: ElevatedButton(
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          product.color),
-                                ),
-                                onPressed: () {},
-                                child: Text("Buy Now".toUpperCase())),
-                          )
-                        ],
-                      )
+                      const SizedBox(
+                        height: kDefaultPaddin,
+                      ),
+                      CartActions(product: product, size: size)
                     ],
                   ),
                 ),

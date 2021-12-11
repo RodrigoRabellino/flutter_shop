@@ -12,7 +12,9 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: const BorderRadius.all(Radius.circular(20)),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(20),
+      ),
       splashColor: product.color,
       onTap: onPress,
       child: Column(
@@ -24,26 +26,34 @@ class ItemCard extends StatelessWidget {
               // height: 180,
               // width: 160,
               decoration: BoxDecoration(
-                  color: product.color,
-                  borderRadius: const BorderRadius.all(Radius.circular(20))),
-              child: Image.asset(product.imageUrl),
+                color: product.color,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              child: Hero(
+                tag: "${product.id}",
+                child: Image.asset(product.imageUrl),
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(kDefaultPaddin / 4),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                product.title,
-                style: const TextStyle(
-                  color: kTextColor,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.title,
+                  style: const TextStyle(
+                    color: kTextColor,
+                  ),
                 ),
-              ),
-              Text(
-                "\$${product.price.toString()}",
-                style: TextStyle(color: kAccent, fontWeight: FontWeight.bold),
-              )
-            ]),
+                Text(
+                  "\$${product.price.toString()}",
+                  style: TextStyle(color: kAccent, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
           ),
 
           // Padding(
